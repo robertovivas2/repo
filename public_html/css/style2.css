@@ -1,0 +1,35 @@
+/* Modify the colors or other properties for a different visual style */
+body {
+  font-family: "Times New Roman", serif;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  color: #880088;
+}
+
+p {
+  color: #444;
+}
+
+a {
+  color: #009900;
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: square;
+}
+
+/* Add at least one custom class */
+.important {
+  font-weight: bold;
+  color: #ff6600;
+}
+
+.summary {
+  font-style: normal;
+  color: #333;
+}

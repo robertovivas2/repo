@@ -1,0 +1,52 @@
+/* Basic styling for the header */
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Basic styling for the main content */
+main {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+}
+
+/* Styling for labels and dropdowns */
+label, select {
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Styling for checkboxes */
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Styling for the total price display */
+#totalPrice {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Styling for the checkout button */
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+ul {
+    list-style-type: none;
+  }

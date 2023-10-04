@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style2.css"> <!-- Link to your CSS file for styling -->
+    <title>Computer Configurator</title>
+    <style>
+        
+body {margin:0;}
+      .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 25%;
+        }
+      </style>
+</head>
+<body>
+    <div class="menu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about_style1.html">About Me</a></li>
+          <li><a href="portfolio_style1.html">Video Games</a></li>
+          <li><a href="computer_config_style2.html">Computer Configurator</a></li>
+          <li><a href="adobe_animate_style2.html">Adobe Animate</a></li>
+          <li><a href="computerconfigurator.html">Press to Switch Version</a></li>
+        </ul>
+      </div>
+    <header>
+        <h1>Computer Configurator</h1>
+    </header>
+    <main>
+        <div id="configurator">
+            <h2>Build Your Dream Computer</h2>
+            
+            <!-- Processor Selection -->
+            <label for="processor">Processor:</label>
+            <select id="processor" onchange="calculatePrice()">
+			    <option value="" disabled selected>Select an option</option>
+                <option value="i3">Intel Core i3</option>
+                <option value="i5">Intel Core i5</option>
+                <option value="i7">Intel Core i7</option>
+            </select>
+            
+            <!-- Processor Speed Selection -->
+            <label for="speed">Processor Speed:</label>
+            <select id="speed" onchange="calculatePrice()">
+                <option value="" disabled selected>Select an option</option>
+				<option value="2.0">2.0 GHz</option>
+                <option value="2.5">2.5 GHz</option>
+                <option value="3.0">3.0 GHz</option>
+            </select>
+            
+            <!-- Memory Selection -->
+            <label for="memory">Memory:</label>
+            <select id="memory" onchange="calculatePrice()">
+                <option value="" disabled selected>Select an option</option>
+				<option value="4">4 GB</option>
+                <option value="8">8 GB</option>
+                <option value="16">16 GB</option>
+            </select>
+            
+            <!-- Hard Drive Size Selection -->
+            <label for="hardDrive">Hard Drive Size:</label>
+            <select id="hardDrive" onchange="calculatePrice()">
+                <option value="" disabled selected>Select an option</option>
+				<option value="256">256 GB</option>
+                <option value="512">512 GB</option>
+                <option value="1000">1 TB</option>
+            </select>
+            
+            <!-- Additional Components Selection -->
+            <label for="add-ons">Additional Components:</label>
+            <input type="checkbox" id="dvd" onchange="calculatePrice()"> DVD-ROM Drive
+            <input type="checkbox" id="soundCard" onchange="calculatePrice()"> Sound Card
+            
+            <!-- Total Price Display -->
+            <p>Total Price: $<span id="totalPrice">0.00</span></p>
+            
+            <!-- Checkout Button -->
+            <button onclick="checkout()">Checkout</button>
+        </div>
+    </main>
+    <script src="script.js"></script> <!-- Link to your JavaScript file -->
+</body>
+</html>

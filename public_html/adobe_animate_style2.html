@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Adobe Animate</title>
+  <meta charset="UTF-8">
+  <meta name="authoring-tool" content="Adobe_Animate_CC">
+  <link rel="stylesheet" type="text/css" href="css/style2.css" />
+  <style>
+  body {margin:0;}
+      .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 25%;
+        }
+  </style>
+  <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+  <script src="hw3.js"></script>
+  <script>
+  var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
+  function init() {
+      canvas = document.getElementById("canvas");
+      anim_container = document.getElementById("animation_container");
+      dom_overlay_container = document.getElementById("dom_overlay_container");
+      var comp=AdobeAn.getComposition("BC030211AA50974D933A462D7E3EF169");
+      var lib=comp.getLibrary();
+      var loader = new createjs.LoadQueue(false);
+      loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
+      loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
+      var lib=comp.getLibrary();
+      loader.loadManifest(lib.properties.manifest);
+  }
+  function handleFileLoad(evt, comp) {
+      var images=comp.getImages();	
+      if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }	
+  }
+  function handleComplete(evt,comp) {
+      //This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+      var lib=comp.getLibrary();
+      var ss=comp.getSpriteSheet();
+      var queue = evt.target;
+      var ssMetadata = lib.ssMetadata;
+      for(i=0; i<ssMetadata.length; i++) {
+          ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
+      }
+      exportRoot = new lib.hw3();
+      stage = new lib.Stage(canvas);	
+      //Registers the "tick" event listener.
+      fnStartAnimation = function() {
+          stage.addChild(exportRoot);
+          createjs.Ticker.framerate = lib.properties.fps;
+          createjs.Ticker.addEventListener("tick", stage);
+      }	    
+      //Code to support hidpi screens and responsive scaling.
+      AdobeAn.makeResponsive(false,'both',false,1,[canvas,anim_container,dom_overlay_container]);	
+      AdobeAn.compositionLoaded(lib.properties.id);
+      fnStartAnimation();
+  }
+  </script>
+</head>
+<body onload="init();" style="margin:0px;">
+  <div class="menu">
+    <ul>
+      <li><a href="index_style2.html">Home</a></li>
+      <li><a href="about_style2.html">About Me</a></li>
+      <li><a href="portfolio_style2.html">Video Games</a></li>
+      <li><a href="computer_config_style2.html">Computer Configurator</a></li>
+      <li><a href="adobe_animate_style2.html">Adobe Animate</a></li>
+      <li><a href="adobe_animate.html">Press to Switch Version</a></li>
+    </ul>
+  </div>
+  <div id="content">
+      <br>
+      <br>
+      <br>
+    <h1>Adobe Animate</h1>
+    <div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:550px; height:400px">
+		<canvas id="canvas" width="550" height="400" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:550px; height:400px; position: absolute; left: 0px; top: 0px; display: block;">
+		</div>
+	</div>
+  </div>
+</body>
+</html>
